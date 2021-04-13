@@ -25,7 +25,7 @@
     // prop name should be value and it takes object as an arg,
     // here you can change and pass value, like from state, or after loading from an external source
     // everytime prop value changes, rerender will be triggered for all the components enclosed under the Provider
-    // for functional component, do not use *this keyword
+    // for functional component, do not use *this keyword, in case of passing functions in Provider
     <ExampleCode.Provider value={{ isLoggedIn: true, authHandler: this.loginHandler }}>
         <Component_in_which_you_want_to_pass_down_state_or_props />
     </ExampleCode.Provider>
