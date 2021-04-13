@@ -2,7 +2,7 @@
 
 ## Context API
 ### 1. Provider-Consumer way (only for Class based components)
-
+#### a. Creating context
 * Create context.js at desired directory level, *feel free to choose desired filename
 ``` js
     import React from 'react'
@@ -14,7 +14,7 @@
     })
     export default ExampleContext
 ```
-
+#### b. Providing context
 * In nearest parent component, from which you want to pass state/props
 ```js
     import ExampleContext from './path_to_context_file'
@@ -29,23 +29,70 @@
     </ExampleCode.Provider>
 
 ```
-
+#### c.i. Consuming context (1st way)
 * In desired children component, in which you wish to consume passed down state/props from Provider
+* With this you can only access value in return statement, but not in componentDidMount() or any other lifeCycle method
 ```js
     import ExampleContext from './path_to_context_file'
 
     {....other code}
 
     // you have to use a function and then return your desired jsx code from there
-    <ExampleCode.Consumer>
-        {(ctx) => {
+    render() {
+        return (
+            <ExampleCode.Consumer>
+                {(ctx) => {
+                    return (
+                        <Header>
+                            {ctx.isLoggedin ? <h1>LoggedIn!</h1> : <h1>Please authenticate!</h1>}
+                        </Header>
+                    )
+                }}
+            </ExampleCode.Consumer>
+        )
+    }
+
+```
+
+#### c.ii. Consuming context (2st way)
+* You can use value wherever you want to use
+
+```js
+    import ExampleContext from './path_to_context_file'
+
+    class Home extends Component {
+        static contextType = ExampleContext
+
+        componentDidMount() {
+            // context keyword is provided by react and should be written like this
+            // as always can change variable name
+            const ctx = this.context
+        }
+
+        render() {
             return (
-                <Header>
-                    {ctx.isLoggedin ? <h1>LoggedIn!</h1> : <h1>Please authenticate!</h1>}
-                </Header>
+                ctx.isLoggedin ? <h1>LoggedIn!</h1> : <h1>Please authenticate</h1>
             )
-        }}
-    </ExampleCode.Consumer>
+        }
+    }
 ```
 
 ### 2. useContext hook (only for functional components)
+#### a. Provinding value
+**same as above, wrap the parent component with Provider**
+
+#### b. Consuming value
+```js
+    import { useContext } from 'react'    
+    import ExampleContext from './path_to_context_file'
+
+    const Demo = () => {
+        const ctx = useContext(ExampleContext)
+        
+        return(
+            <Sidebar>
+                {ctx.isLoggedin ? <h1>LoggedIn!</h1> : <h1>Please authenticate!</h1>}
+            </Sidebar>
+        )
+    }
+```
