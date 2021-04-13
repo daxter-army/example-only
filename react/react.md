@@ -7,10 +7,11 @@
 ``` js
     import React from 'react'
 
-    // can store any kind of data like string, bool, object as per your need,
+    // can store any kind of data like string, bool, object, functions as per your need,
     // here i have taken object for this case
     const ExampleContext = React.createContext({
-        isLoggedIn: false
+        isLoggedIn: false,
+        authHandler: () => {}
     })
     export default ExampleContext
 ```
@@ -23,8 +24,9 @@
 
     // prop name should be value and it takes object as an arg,
     // here you can change and pass value, like from state, or after loading from an external source
-    // everytime this value changes, rerender will be triggered for all the components enclosed under the Provider
-    <ExampleCode.Provider value={{ isLoggedIn: true }}>
+    // everytime prop value changes, rerender will be triggered for all the components enclosed under the Provider
+    // for functional component, do not use *this keyword
+    <ExampleCode.Provider value={{ isLoggedIn: true, authHandler: this.loginHandler }}>
         <Component_in_which_you_want_to_pass_down_state_or_props />
     </ExampleCode.Provider>
 
