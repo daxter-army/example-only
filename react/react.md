@@ -1,0 +1,51 @@
+# React
+
+## Context API
+### 1. Provider-Consumer way (only for Class based components)
+
+* Create context.js at desired directory level, *feel free to choose desired filename
+``` js
+    import React from 'react'
+
+    // can store any kind of data like string, bool, object as per your need,
+    // here i have taken object for this case
+    const ExampleContext = React.createContext({
+        isLoggedIn: false
+    })
+    export default ExampleContext
+```
+
+* In nearest parent component, from which you want to pass state/props
+```js
+    import ExampleContext from './path_to_context_file'
+    
+    {....other code}
+
+    // prop name should be value and it takes object as an arg,
+    // here you can change and pass value, like from state, or after loading from an external source
+    // everytime this value changes, rerender will be triggered for all the components enclosed under the Provider
+    <ExampleCode.Provider value={{ isLoggedIn: true }}>
+        <Component_in_which_you_want_to_pass_down_state_or_props />
+    </ExampleCode.Provider>
+
+```
+
+* In desired children component, in which you wish to consume passed down state/props from Provider
+```js
+    import ExampleContext from './path_to_context_file'
+
+    {....other code}
+
+    // you have to use a function and then return your desired jsx code from there
+    <ExampleCode.Consumer>
+        {(ctx) => {
+            return (
+                <Header>
+                    {ctx.isLoggedin ? <h1>LoggedIn!</h1> : <h1>Please authenticate!</h1>}
+                </Header>
+            )
+        }}
+    </ExampleCode.Consumer>
+```
+
+### 2. useContext hook (only for functional components)
