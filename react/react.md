@@ -15,7 +15,7 @@
     })
     export default ExampleContext
 ```
-**NOTE: Although it is not necessary to write all the values here that you intend to pass in context, you can completely add/remove from Provider, but declaring values prior gives you better code completion, otherwiseit is completely fine to pass no value here**
+**NOTE: Although it is not necessary to write all the values here that you intend to pass in context, you can also add/remove from Provider, but declaring values prior gives you better code completion, otherwiseit is completely fine to pass no value here**
 #### b. Providing context
 * In nearest parent component, from which you want to pass state/props
 ```js
