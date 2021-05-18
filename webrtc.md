@@ -1,7 +1,6 @@
 # WebRTC - Web Real Time Communication
 
-## Full documentation is awesome and available at
-[MDN Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
+## Full documentation is awesome and available at [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
 
 ## Connect to Media Devices
 * In the index.html file (name is upto you) of your project
