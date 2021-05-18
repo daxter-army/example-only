@@ -1,4 +1,4 @@
-# WebRTC - Web Real Time Communication
+# webRTC - Web Real Time Communication
 
 ## Full documentation is awesome and available at [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
 
@@ -59,8 +59,10 @@
             // the above two lines are enough to run camera and see its feed,
             // to apply advanced contraints
             const track = stream.getVideoTracks()[0]
-            track.applyContraints({ advanced: [{ exposureCompensation: -3 }] })
-            // only thos properties will be applied that are supported, know your settings from
+            track.applyContraints({ advanced: [{ exposureCompensation: -2.50 /*[-3,+3]*/ }] }) // you won't find this line anywhere else 😎
+            // only those properties will be applied that are supported to your devices, know your settings from
+            console.log(track.getConstraints())
+            // know the applied settings on your stream from here
             console.log(track.getSettings())
         }
         catch(error) {

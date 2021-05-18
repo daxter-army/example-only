@@ -1,4 +1,4 @@
-# React
+# react
 
 ## Context API
 ### 1. Provider-Consumer way (only for Class based components)
@@ -21,7 +21,7 @@
 ```js
     import ExampleContext from './path_to_context_file'
     
-    {....other code}
+    // ...other code
 
     // prop name should be value and it takes object as an arg,
     // here you can change and pass value, like from state, or after loading from an external source
