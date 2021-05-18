@@ -56,6 +56,12 @@
             const videoPlayer = document.getElementById('video')
             videoPlayer.srcObject = stream
             videoPlayer.play()
+            // the above two lines are enough to run camera and see its feed,
+            // to apply advanced contraints
+            const track = stream.getVideoTracks()[0]
+            track.applyContraints({ advanced: [{ exposureCompensation: -3 }] })
+            // only thos properties will be applied that are supported, know your settings from
+            console.log(track.getSettings())
         }
         catch(error) {
             console.error('ERROR: navigator.mediaDevices.getUserMedia()')
@@ -66,13 +72,13 @@
 ```
 
 ### Video Constraints
-* you can use
+* you can use, the following line to know all the supported constraints supported by your device's media components
 ```js
     const supported = navigator.mediaDevices.getSupported()
     console.log(supported)
 ```
-* to know all the supported constraints supported by your device's media components
 
+* common constraints
 ```js
     const constraints = {
         // width of video stream
