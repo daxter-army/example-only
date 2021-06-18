@@ -11,3 +11,5 @@
 # 6. To erase a whole word, use Ctrl+Backspace/Delete
 
 # 7. To clear terminal, use Ctrl+l
+
+# 8. always "" (double quotes) while writing json
